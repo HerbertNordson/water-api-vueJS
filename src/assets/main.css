@@ -1,0 +1,7 @@
+@import './base.css';
+
+/* directive to include Tailwind’s */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
