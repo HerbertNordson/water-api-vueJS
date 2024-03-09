@@ -1,35 +1,24 @@
-import api from '@/services/api'
 import getWaterApi from '@/services/waterApiRest'
-import type { IResponseAPI } from '@/utils/interfaces'
+import type { IError, IResponseAPI } from '@/utils/interfaces'
 import { defineStore } from 'pinia'
 import { ref, type Ref } from 'vue'
-
-interface IError {
-  message: String
-  status: number
-}
 
 export const useClimateStore = defineStore('climate', () => {
   //states
   const climate: Ref<IResponseAPI> = ref({} as IResponseAPI)
-  const state: Ref<String> = ref('Carregar')
+  const state: Ref<string> = ref('Carregar')
   const error: Ref<IError> = ref({
     message: '',
     status: 0
   })
 
   //actions
-  async function handleDataClimate(city: String) {
+  function handleDataClimate(data: IResponseAPI) {
     state.value = 'Carregando'
-
-    const response = await getWaterApi(city)
-
-    if (response) {
-      return (state.value = 'Carregado')
-    }
+    
+    climate.value = data;
 
     state.value = 'Carregar'
-    return []
   }
 
   function resetError() {

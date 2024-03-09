@@ -1,9 +1,9 @@
-import type { IErrorRequest, IForecastday, IHour } from '@/utils/interfaces'
+import type { IErrorRequest, IForecastday, IHour, IResponseAPI } from '@/utils/interfaces'
 import api from './api'
 import { useClimateStore } from '@/stores/climateStore'
 
-const getWaterApi = async (city: String = 'Salvador') => {
-  const clima = useClimateStore()
+const getWaterApi= async (city: string = "Salvador") => {
+  const { handleDataClimate } = useClimateStore()
 
   try {
     const resp = await api.get(
@@ -12,14 +12,16 @@ const getWaterApi = async (city: String = 'Salvador') => {
 
     if (resp.status === 200) {
       const value = resp.data
-      clima.climate = {
+      const data: IResponseAPI = {
         location: {
           name: value.location.name,
           region: value.location.region,
-          country: value.location.country
+          country: value.location.country,
+          localtime: value.location.localtime
         },
         current: {
           temp_c: value.current.temp_c,
+          is_day: value.current.is_day,
           condition: {
             text: value.current.condition.text,
             icon: value.current.condition.icon
@@ -50,9 +52,10 @@ const getWaterApi = async (city: String = 'Salvador') => {
           }))
         }
       }
-
-      return true
+      handleDataClimate(data)
     }
+
+    return {} as IResponseAPI
   } catch (error: IErrorRequest | any) {
     if (error.response.status === 403) {
       clima.error = { message: 'Ocorreu um erro de autorização.', status: error.response.status }
@@ -67,7 +70,7 @@ const getWaterApi = async (city: String = 'Salvador') => {
         status: error.response.status
       }
     }
-    return false
+    return {} as IResponseAPI
   }
 }
 

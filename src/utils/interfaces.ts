@@ -5,13 +5,15 @@ export interface IResponseAPI {
 }
 
 interface ILocation {
-  name: String
-  region: String
-  country: String
+  name: string
+  region: string
+  country: string
+  localtime: string
 }
 
 interface ICurrent {
   temp_c: number
+  is_day: number
   condition: ICondition
 }
 interface IForecast {
@@ -19,7 +21,7 @@ interface IForecast {
 }
 
 export interface IForecastday {
-  date: String
+  date: string
   day: {
     maxtemp_c: number
     mintemp_c: number
@@ -27,21 +29,26 @@ export interface IForecastday {
   }
   hour: Array<IHour>
 }
- 
+
 export interface IHour {
-  time: String
+  time: string
   temp_c: number
   is_day: number
   condition: ICondition
 }
 
 interface ICondition {
-  text: String
-  icon: String
+  text: string
+  icon: string
 }
 
 export interface IErrorRequest {
   response: {
     status: number
   }
+}
+
+export interface IError {
+  message: String
+  status: number
 }
