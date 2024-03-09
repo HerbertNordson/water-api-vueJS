@@ -3,7 +3,7 @@ import api from './api'
 import { useClimateStore } from '@/stores/climateStore'
 
 const getWaterApi= async (city: string = "Salvador") => {
-  const { handleDataClimate } = useClimateStore()
+  const clima = useClimateStore()
 
   try {
     const resp = await api.get(
@@ -52,22 +52,22 @@ const getWaterApi= async (city: string = "Salvador") => {
           }))
         }
       }
-      handleDataClimate(data)
+      clima.handleDataClimate(data)
     }
 
     return {} as IResponseAPI
-  } catch (error: IErrorRequest | any) {
-    if (error.response.status === 403) {
-      clima.error = { message: 'Ocorreu um erro de autorização.', status: error.response.status }
-    } else if (error.response.status === 404) {
+  } catch (err: IErrorRequest | any) {
+    if (err.response.status === 403) {
+      clima.error = { message: 'Ocorreu um erro de autorização.', status: err.response.status }
+    } else if (err.response.status === 404) {
       clima.error = {
         message: `Não foi encontrado informações do clima para a cidade: ${city}.`,
-        status: error.response.status
+        status: err.response.status
       }
     } else {
       clima.error = {
         message: 'Não foi possível se comunicar com o servidor!',
-        status: error.response.status
+        status: err.response.status
       }
     }
     return {} as IResponseAPI
