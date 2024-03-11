@@ -1,6 +1,4 @@
-# water-api-vuejs
-
-## Weather API
+# Weather API
 
 Quem dera se a gente pudesse prever o clima não é? Na verdade, até que dá
 pra tentar. Mas só visualizar números de máxima e mínima não tem graça.
@@ -13,7 +11,7 @@ praia, ou se um chocolate quente e cobertor serão a melhor pedida.
 
 ## Instalação
 
-Basta clonar este repositorio em sua máquina local utilizando o ``` git clone ``` 
+Basta clonar este repositorio em sua máquina local utilizando o ``` git clone https://github.com/HerbertNordson/water-api-vueJS.git ``` 
 e da um ``` cd water-api-vuejs ``` e em seguida ``` npm install ``` para instalar 
 todas as dependências e deixar o seu app redondinho. 
 
