@@ -40,7 +40,7 @@ Caso você queira somente usar a aplicação, basta acessar através deste [link
 melhor do que o enfeitado e complexo.
 ● Erro bem descrito protege de debugs longos.
 ```
-## No que você deve focar:
+## Foco no desenvolvimento:
 ```
 ● Disponibilizar o código publicamente no GitHub
 ● Bom uso da tecnologia solicitada. O VueJS é bem completo e
@@ -48,7 +48,4 @@ documentado. Use e abuse fazendo o melhor
 ● Primeiro as funcionalidades, depois o visual
 ● Deixar a aplicação funcional, rodando certinha e disponível em algum
 serviço web (Heroku, WebHost, AWS etc.) de sua preferência
-Ufa… Parece muito? Que nada, você tira de letra. Dev no Brasil é outro nível.
-Mas não se preocupe. Qualquer dúvida pode falar com a gente, que nós
-estamos prontos para te ajudar.
 ```
