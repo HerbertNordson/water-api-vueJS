@@ -12,21 +12,21 @@ function onSubmit(event: Event) {
     if (selected.value === "") { return }
 
     getWaterApi(selected.value)
-
+    selected.value = ""
 }
 </script>
 
 <template>
-    <section class="w-full md:w-80 m-auto">
+    <section class="w-full md:w-1/5 m-auto">
 
-        <form @submit="onSubmit" class="flex flex-row justify-between items-center w-full m-auto">
+        <form @submit="onSubmit" class="flex flex-row justify-around items-center w-full m-auto gap-2">
             <div class="flex items-center gap-2">
                 <label for="city">Cidade:</label>
-                <input name="city" type="text" v-model="selected" class="border-2 border-black p-2 rounded-lg"
+                <input name="city" type="text" v-model="selected" class="border-2 p-2 rounded-lg"
                     placeholder="Ex: Salvador" />
             </div>
 
-            <button type="submit" class="text-medium px-4 py-2 border-2 border-black rounded-lg">
+            <button type="submit" class="text-medium py-2 hover:text-white focus:text-white focus:font-medium">
                 {{ conditionClimate.state }}
             </button>
         </form>

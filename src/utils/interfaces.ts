@@ -14,6 +14,12 @@ interface ILocation {
 interface ICurrent {
   temp_c: number
   is_day: number
+  wind_kph: number
+  wind_dir: string
+  air_quality: {
+    o3: number
+    "us-epa-index": number
+  }
   condition: ICondition
 }
 interface IForecast {
